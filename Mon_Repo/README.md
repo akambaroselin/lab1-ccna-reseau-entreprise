@@ -214,7 +214,6 @@ lab-ccna-reseau-entreprise/
     ├── ping-invites-bloque.png
     └── ssh-connexion.png
 ```
----
 
 <div align="center">
 
