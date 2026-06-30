@@ -1,0 +1,28 @@
+!Configuration de base
+en
+conf t
+interface range g0/0-1
+no sh 
+exit
+
+hostname ISP
+service password-encryption
+security password min-length 10
+enable secret cisco12@test
+
+line console 0
+password cisco12@test
+login
+exit
+banner motd #RESTRICTED ACCESS! Any unauthorized access is a criminal offense.#
+no ip domain-lookup
+
+!Internet
+interface g0/0
+ip address 203.0.113.1 255.255.255.252
+
+interface g0/1
+ip address 8.8.8.1 255.255.255.252
+
+ip route 192.168.0.0 255.255.0.0 203.0.113.2
+do wr

@@ -1,0 +1,83 @@
+en
+conf t
+hostname S2
+service password-encryption
+enable secret cisco12@test
+
+!Configuration de SSH
+ip domain-name lab1_ccna_1.com
+crypto key generate rsa
+1024
+username admin password cisco12@test
+line vty 0 15
+transport input ssh 
+login local
+ip ssh version 2
+
+line console 0
+password cisco12@test
+login
+exit
+banner motd #RESTRICTED ACCESS! Any unauthorized access is a criminal offense.#
+no ip domain-lookup
+
+!Création du VLAN
+vlan 20
+name COMPTA
+vlan 237
+name NATIF
+
+!SVI de management
+interface vlan 20
+ip address 192.168.20.9 255.255.255.0
+no shutdown
+exit
+ip default-gateway 192.168.20.254
+
+!Configuration du port d'acces vers son VLAN
+interface range fa0/23-24
+switchport mode access
+switchport access vlan 20
+
+!Configuration du lien trunk entre MLS1-S2
+interface f0/2
+switchport mode trunk
+switchport nonegotiate
+switchport trunk native vlan 237
+switchport trunk allowed vlan 20,237
+
+!Sécurité des périphériques
+interface range fa0/23-24
+switchport mode access
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation shutdown
+switchport port-security mac-address sticky
+
+!Activer DHCP Snooping sur VLAN 20
+ip dhcp snooping
+ip dhcp snooping vlan 20
+ip arp inspection vlan 20
+
+!Marquage du port vers le vrai serveur comme trusted
+interface fa0/2
+ip dhcp snooping trust
+ip arp inspection trust
+
+!Limiter le débit DHCP sur les ports clients
+interface range fa0/23-24
+ip dhcp snooping limit rate 5
+
+!Désactivation de CDP et LLDP
+no cdp enable
+no lldp transmit
+no lldp receive
+
+!Insertion des port inutilisés dans un VLAN Poubelle (999)
+vlan 999
+name POUBELLE
+interface range fa0/1, fa0/3-22, g0/1-2
+switchport mode access
+switchport acces vlan 999
+sh
+do wr

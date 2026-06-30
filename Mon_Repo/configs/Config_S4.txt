@@ -1,0 +1,68 @@
+en
+conf t
+hostname S4
+service password-encryption
+security password min-length 10
+enable secret cisco12@test
+
+!Configuration de SSH
+ip domain-name lab1_ccna_1.com
+crypto key generate rsa
+1024
+username admin password cisco12@test
+line vty 0 15
+transport input ssh 
+login local
+ip ssh version 2
+
+line console 0
+password cisco12@test
+login
+exit
+banner motd #RESTRICTED ACCESS! Any unauthorized access is a criminal offense.#
+no ip domain-lookup
+
+!Création du VLAN
+vlan 30
+name INVITES
+vlan 237
+name NATIF
+
+!SVI de management
+interface vlan 30
+ip address 192.168.30.9 255.255.255.0
+no shutdown
+exit
+ip default-gateway 192.168.30.254
+
+!Configuration du port d'acces vers son VLAN
+interface fa0/24
+switchport mode access
+switchport access vlan 30
+
+!Configuration du lien trunk entre MLS1-S4
+interface f0/1
+switchport mode trunk
+switchport nonegotiate
+switchport trunk native vlan 237
+switchport trunk allowed vlan 30,237
+
+!Bloquer VLAN 30 vers VLANs internes mais autoriser vers Internet
+ip access-list extended BLOCK_INVITES
+deny ip 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255
+deny ip 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.255
+deny ip 192.168.30.0 0.0.0.255 192.168.40.0 0.0.0.255
+permit ip any any
+
+!Appliquer sur SVI VLAN 30
+interface vlan 30
+ip access-group BLOCK_INVITES in
+
+!Insertion des port inutilisés dans un VLAN Poubelle (999)
+vlan 999
+name POUBELLE
+interface range fa0/2-23, g0/1-2
+no switchport mode access
+no switchport acces vlan 999
+sh
+do wr

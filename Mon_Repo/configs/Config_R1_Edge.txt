@@ -1,0 +1,48 @@
+!Configuration de base
+en
+conf t
+interface range g0/1-2
+no sh
+exit
+
+hostname R1-Edge
+service password-encryption
+security password min-length 10
+enable secret cisco12@test
+
+ip domain-name lab1_ccna_1.com
+crypto key generate rsa
+1024
+username admin password cisco12@test
+line vty 0 15
+transport input ssh 
+login local
+ip ssh version 2
+
+line console 0
+password cisco12@test
+login
+exit
+
+banner motd #RESTRICTED ACCESS! Any unauthorized access is a criminal offense.#
+no ip domain-lookup
+
+!Routage vers les MLS
+interface g0/1
+ip address 209.237.131.1 255.255.255.252
+
+interface g0/2
+ip address 209.237.132.1 255.255.255.252
+exit
+
+ip route 192.168.0.0 255.255.0.0 209.237.131.2
+ip route 192.168.0.0 255.255.0.0 209.237.132.2 5
+
+!Internet
+interface g0/0
+ip address 203.0.113.2 255.255.255.252
+no sh
+exit
+
+ip route 8.8.8.0 255.255.255.252 203.0.113.1
+do wr
