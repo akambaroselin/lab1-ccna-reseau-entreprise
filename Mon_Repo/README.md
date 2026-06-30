@@ -42,28 +42,7 @@ Ce projet simule l'infrastructure réseau d'une entreprise multi-départements s
 
 ## Topologie
 
-```
-                        [Internet]
-                            |
-                         [ISP]
-                      203.0.113.1/30
-                            |
-                       [R1-Edge]
-                  G0/1              G0/2
-          .131.1/30                    .132.1/30
-                |                          |
-           [MLS1]  ══════ Po1 LACP ══════ [MLS2]
-         HSRP Actif                    HSRP Standby
-        .131.2/30                        .132.2/30
-          |      |                       |       |
-        [S1]   [S2]                   [S3]    [S4]
-       VLAN10  VLAN20               VLAN40  VLAN30
-         |       |                    |       |
-      PC-RH  PC-Compta         PC-Direction  AP WLAN
-                                  Srv Local   Laptop
-```
-
-> *(Capture de la topologie Packet Tracer à insérer ici)*
+![Topologie du réseau](captures/Topologie.png)
 
 ---
 
