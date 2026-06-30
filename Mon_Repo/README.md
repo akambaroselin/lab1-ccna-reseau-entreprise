@@ -229,7 +229,7 @@ lab-ccna-reseau-entreprise/
 ### Topologie
 
 <p align="center">
-  <img src="Mon_Repo/captures/Topologie.png" alt="Topologie reSeau">
+  <img src="captures/Topologie.png" alt="Topologie reseau">
   <br>
   <em>Vue logique complète de la topologie sous Cisco Packet Tracer</em>
 </p>
@@ -239,19 +239,19 @@ lab-ccna-reseau-entreprise/
 ### Interfaces et connectivité
 
 <p align="center">
-  <img src="Mon_Repo/captures/Interfaces_R1.png" alt="Interfaces R1-Edge">
+  <img src="captures/Interfaces_R1.png" alt="Interfaces R1-Edge">
   <br>
   <em>R1-Edge — show ip interface brief : G0/0 (WAN), G0/1 et G0/2 (vers MLS1/MLS2) en up/up</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/Interfaces_MLS1.png" alt="Interfaces MLS1">
+  <img src="captures/Interfaces_MLS1.png" alt="Interfaces MLS1">
   <br>
   <em>MLS1 — show ip interface brief : interfaces routées et SVIs VLAN 10/20/30/40 actives</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/Interfaces_MLS2.png" alt="Interfaces MLS2">
+  <img src="captures/Interfaces_MLS2.png" alt="Interfaces MLS2">
   <br>
   <em>MLS2 — show ip interface brief : interfaces routées et SVIs VLAN 10/20/30/40 actives</em>
 </p>
@@ -261,19 +261,19 @@ lab-ccna-reseau-entreprise/
 ### Haute disponibilité
 
 <p align="center">
-  <img src="Mon_Repo/captures/EtherChannel.png" alt="EtherChannel LACP">
+  <img src="captures/EtherChannel.png" alt="EtherChannel LACP">
   <br>
   <em>MLS1 — show etherchannel summary : Port-channel 1 en statut SU (LACP actif, Fa0/23-24 bundled)</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/HSRP_Active.png" alt="HSRP MLS1 actif">
+  <img src="captures/HSRP_Active.png" alt="HSRP MLS1 actif">
   <br>
   <em>MLS1 — show standby brief : rôle Active sur VLAN 10/20 (priorité 150), IP virtuelle .254</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/HSRP_Standby.png" alt="HSRP MLS2 standby">
+  <img src="captures/HSRP_Standby.png" alt="HSRP MLS2 standby">
   <br>
   <em>MLS2 — show standby brief : rôle Standby sur VLAN 10/20, Active sur VLAN 30/40 (load balancing)</em>
 </p>
@@ -283,19 +283,19 @@ lab-ccna-reseau-entreprise/
 ### Switching L2
 
 <p align="center">
-  <img src="Mon_Repo/captures/STP_Root_Bridge.png" alt="Spanning Tree root bridge">
+  <img src="captures/STP_Root_Bridge.png" alt="Spanning Tree root bridge">
   <br>
   <em>MLS1 — show spanning-tree vlan 10 : MLS1 confirmé root bridge sur tous les VLANs actifs</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/VLANs_MLS1.png" alt="VLANs MLS1">
+  <img src="captures/VLANs_MLS1.png" alt="VLANs MLS1">
   <br>
   <em>MLS1 — show vlan brief : VLANs 10, 20, 30, 40, 237 (natif) et 999 (poubelle) créés et actifs</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/VLANs_S1.png" alt="VLANs S1">
+  <img src="captures/VLANs_S1.png" alt="VLANs S1">
   <br>
   <em>S1 — show vlan brief : VLAN 10 (RH) et VLAN 999 (poubelle) configurés sur le switch d'accès</em>
 </p>
@@ -305,19 +305,19 @@ lab-ccna-reseau-entreprise/
 ### Sécurité
 
 <p align="center">
-  <img src="Mon_Repo/captures/Port_Security.png" alt="Port security S1">
+  <img src="captures/Port_Security.png" alt="Port security S1">
   <br>
   <em>S1 — show port-security : max 1 adresse MAC, apprentissage sticky, violation shutdown</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/DHCP_Baux_Distribues.png" alt="DHCP bindings">
+  <img src="captures/DHCP_Baux_Distribues.png" alt="DHCP bindings">
   <br>
   <em>MLS1 — show ip dhcp binding : baux distribués par VLAN via les pools dédiés</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/ACL_Isolation_VLAN_Invites.png" alt="ACL BLOCK_INVITES">
+  <img src="captures/ACL_Isolation_VLAN_Invites.png" alt="ACL BLOCK_INVITES">
   <br>
   <em>S4 — show access-lists : ACL BLOCK_INVITES bloquant le trafic VLAN 30 vers les VLANs internes</em>
 </p>
@@ -327,19 +327,19 @@ lab-ccna-reseau-entreprise/
 ### Tests de validation
 
 <p align="center">
-  <img src="Mon_Repo/captures/Ping_Internet_Fonctionnel.png" alt="Ping Internet">
+  <img src="captures/Ping_Internet_Fonctionnel.png" alt="Ping Internet">
   <br>
   <em>PC1-RH — ping 8.8.8.2 : connectivité Internet bout en bout validée (VLAN 10 → ISP → Serveur)</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/Ping_Isolation_Fonctionnelle.png" alt="Ping isolation invités">
+  <img src="captures/Ping_Isolation_Fonctionnelle.png" alt="Ping isolation invités">
   <br>
   <em>Laptop invité — ping 192.168.10.1 : requête bloquée par l'ACL BLOCK_INVITES (isolation VLAN 30 confirmée)</em>
 </p>
 
 <p align="center">
-  <img src="Mon_Repo/captures/SSH_Fonctionnel.png" alt="SSH connexion">
+  <img src="captures/SSH_Fonctionnel.png" alt="SSH connexion">
   <br>
   <em>SSH depuis PC1-RH vers MLS1 : authentification AAA locale, bannière MOTD et session SSHv2 établie</em>
 </p>
