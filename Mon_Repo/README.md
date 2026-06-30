@@ -331,19 +331,19 @@ lab-ccna-reseau-entreprise/
 ### Tests de validation
 
 <p align="center">
-  <img src="captures/Ping_Internet_Fonctionnel.png" alt="Ping Internet">
+  <img src="captures/Ping_Internet_Ok.png" alt="Ping Internet">
   <br>
   <em>PC1-RH: ping 8.8.8.2 : connectivité Internet bout en bout validée (VLAN 10 → ISP → Serveur)</em>
 </p>
 
 <p align="center">
-  <img src="captures/Ping_Isolation_Fonctionnelle.png" alt="Ping isolation invités">
+  <img src="captures/Ping_Invite_Bloque.png" alt="Ping isolation invités">
   <br>
   <em>Laptop invité: ping 192.168.10.1 : requête bloquée par l'ACL BLOCK_INVITES (isolation VLAN 30 confirmée)</em>
 </p>
 
 <p align="center">
-  <img src="captures/SSH_Fonctionnel.png" alt="SSH connexion">
+  <img src="captures/SSH_Connexion.png" alt="SSH connexion">
   <br>
   <em>SSH depuis PC1-RH vers MLS1 : authentification AAA locale, bannière MOTD et session SSHv2 établie</em>
 </p>
