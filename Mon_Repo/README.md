@@ -214,16 +214,6 @@ lab-ccna-reseau-entreprise/
     ├── ping-invites-bloque.png
     └── ssh-connexion.png
 ```
-
----
-
-## Limites connues
-
-- [ ] **ISP** - aucune configuration SSH (pas de clé RSA générée)
-- [ ] **MLS2** - vérifier la génération de la clé RSA (risque identique à R1-Edge)
-- [ ] **S1, S2, S3** - faute de frappe `switchport acces vlan 999` à corriger en `switchport access vlan 999`
-- [ ] Ajouter les captures de validation dans `captures/`
-
 ---
 
 <div align="center">
@@ -239,7 +229,7 @@ lab-ccna-reseau-entreprise/
 ### Topologie
 
 <p align="center">
-  <img src="Mon_Repo/captures/Topologie.png" alt="Topologie reseau">
+  <img src="Mon_Repo/captures/Topologie.png" alt="Topologie reSeau">
   <br>
   <em>Vue logique complète de la topologie sous Cisco Packet Tracer</em>
 </p>
