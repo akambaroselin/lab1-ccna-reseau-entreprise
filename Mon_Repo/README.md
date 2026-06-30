@@ -274,7 +274,7 @@ lab-ccna-reseau-entreprise/
 <p align="center">
   <img src="captures/VLANs_MLS1.png" alt="VLANs MLS1">
   <br>
-  <em>MLS1: show vlan brief : VLANs 10, 20, 30, 40, 237 (natif) et 999 (poubelle) créés et actifs</em>
+  <em>MLS1: show vlan brief : VLANs 10, 20, 30, 40, 237 (natif) créés et actifs</em>
 </p>
 
 <p align="center">
